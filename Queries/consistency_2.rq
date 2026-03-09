@@ -1,0 +1,10 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?patient ?rf
+WHERE {
+  ?patient base:hasRiskFactor ?rf .
+  FILTER NOT EXISTS {
+    VALUES ?allowed { base:riskfactor/smoking base:riskfactor/high_cholesterol base:riskfactor/heart_disease base:riskfactor/difficulty_walking base:riskfactor/high_blood_pressure base:riskfactor/hypertension base:riskfactor/exercise_induced_angina }
+    FILTER(?rf = ?allowed)
+  }
+}

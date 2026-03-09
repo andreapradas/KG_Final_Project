@@ -1,0 +1,9 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?property (COUNT(?s) AS ?count)
+WHERE {
+  ?s ?property ?o .
+  FILTER(?property IN (base:hasDisease, base:hasRiskFactor, base:hasMeasurement))
+}
+GROUP BY ?property
+ORDER BY DESC(?count)

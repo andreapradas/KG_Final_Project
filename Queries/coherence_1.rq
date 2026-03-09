@@ -1,0 +1,9 @@
+PREFIX base: <http://kg-course.io/health/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?entity
+WHERE {
+  ?entity rdf:type ?type .
+  FILTER NOT EXISTS { ?entity ?p ?o . FILTER (?p != rdf:type) }
+  FILTER NOT EXISTS { ?s ?p ?entity }
+}

@@ -1,0 +1,9 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?risk (COUNT(?patient) AS ?num_patients)
+WHERE {
+  ?patient base:hasDisease base:Hypertension .
+  ?patient base:hasRiskFactor ?risk .
+}
+GROUP BY ?risk
+ORDER BY DESC(?num_patients)

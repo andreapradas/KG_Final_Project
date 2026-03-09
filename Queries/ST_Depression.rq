@@ -1,0 +1,10 @@
+PREFIX base: <http://kg-course.io/health/>
+PREFIX sdo: <http://schema.org/>
+
+SELECT (AVG(?value) AS ?avg_STDepression)
+WHERE {
+  ?patient base:hasDisease base:Hypertension .
+  ?patient base:hasMeasurement ?m .
+  ?m sdo:name "ST_Depression" .
+  ?m sdo:value ?value .
+}

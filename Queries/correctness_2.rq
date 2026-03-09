@@ -1,0 +1,13 @@
+PREFIX base: <http://kg-course.io/health/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?measurement ?value ?expectedType ?actualType
+WHERE {
+  ?measurement rdf:type base:ClinicalMeasurement .
+  ?measurement base:value ?value .
+
+  BIND(xsd:float AS ?expectedType)
+  BIND(datatype(?value) AS ?actualType)
+
+  FILTER(?actualType != ?expectedType)
+}

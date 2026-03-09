@@ -1,0 +1,13 @@
+PREFIX base: <http://kg-course.io/health/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?s ?p ?o
+WHERE {
+  ?s ?p ?o .
+  
+  FILTER(
+    (?p = base:hasDisease && NOT EXISTS { ?o rdf:type base:Disease }) ||
+    (?p = base:hasRiskFactor && NOT EXISTS { ?o rdf:type base:RiskFactor }) ||
+    (?p = base:hasMeasurement && NOT EXISTS { ?o rdf:type base:ClinicalMeasurement })
+  )
+}

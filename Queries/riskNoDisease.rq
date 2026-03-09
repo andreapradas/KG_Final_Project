@@ -1,0 +1,7 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?patient ?risk
+WHERE {
+  ?patient base:hasRiskFactor ?risk .
+  FILTER NOT EXISTS { ?patient base:hasDisease ?d }
+}

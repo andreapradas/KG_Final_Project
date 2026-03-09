@@ -1,0 +1,9 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?patient ?disease1 ?disease2
+WHERE {
+  ?patient base:hasDisease ?disease1 .
+  ?patient base:hasDisease ?disease2 .
+  FILTER(?disease1 != ?disease2)
+}
+LIMIT 20
