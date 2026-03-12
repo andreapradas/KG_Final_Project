@@ -1,7 +1,7 @@
 PREFIX base: <http://kg-course.io/health/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-SELECT ?patient
+SELECT (COUNT(?patient) AS ?num_missing)
 WHERE {
   ?patient rdf:type base:Patient .
   FILTER NOT EXISTS { ?patient base:hasRiskFactor ?risk }

@@ -1,8 +1,0 @@
-PREFIX base: <http://kg-course.io/health/>
-
-SELECT ?patient ?rf (COUNT(?rf) AS ?count)
-WHERE {
-  ?patient base:hasRiskFactor ?rf .
-}
-GROUP BY ?patient ?rf
-HAVING (?count > 1)

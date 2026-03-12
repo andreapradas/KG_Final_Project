@@ -1,8 +1,0 @@
-PREFIX base: <http://kg-course.io/health/>
-
-SELECT DISTINCT ?patient ?riskFactor
-WHERE {
-  ?patient base:hasDisease ?disease .
-  ?disease base:relatedTo ?riskFactor .
-  FILTER NOT EXISTS { ?patient base:hasRiskFactor ?riskFactor }
-}

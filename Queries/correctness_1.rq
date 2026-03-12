@@ -1,13 +1,22 @@
 PREFIX base: <http://kg-course.io/health/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sdo: <http://schema.org/>
 
-SELECT ?s ?p ?o
+SELECT 
+  (COUNT(?d) AS ?missingDiseaseType)
+  (COUNT(?rf) AS ?missingRiskFactorType)
+  (COUNT(?m) AS ?missingMeasurementType)
 WHERE {
-  ?s ?p ?o .
-  
-  FILTER(
-    (?p = base:hasDisease && NOT EXISTS { ?o rdf:type base:Disease }) ||
-    (?p = base:hasRiskFactor && NOT EXISTS { ?o rdf:type base:RiskFactor }) ||
-    (?p = base:hasMeasurement && NOT EXISTS { ?o rdf:type base:ClinicalMeasurement })
-  )
+  OPTIONAL {
+    ?s base:hasDisease ?d .
+    FILTER NOT EXISTS { ?d rdf:type base:Disease }
+  }
+  OPTIONAL {
+    ?s base:hasRiskFactor ?rf .
+    FILTER NOT EXISTS { ?rf rdf:type sdo:MedicalRiskFactor }
+  }
+  OPTIONAL {
+    ?s base:hasMeasurement ?m .
+    FILTER NOT EXISTS { ?m rdf:type sdo:MedicalObservation }
+  }
 }

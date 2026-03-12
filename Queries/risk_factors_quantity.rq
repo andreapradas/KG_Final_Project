@@ -1,0 +1,9 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?p (COUNT(?risk) AS ?numRisks)
+WHERE {
+    ?p base:hasRiskFactor ?risk .
+}
+GROUP BY ?p
+ORDER BY DESC(?numRisks)
+LIMIT 20

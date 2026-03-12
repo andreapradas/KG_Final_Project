@@ -1,7 +1,0 @@
-PREFIX base: <http://kg-course.io/health/>
-
-SELECT DISTINCT ?entity1 ?entity2
-WHERE {
-  ?entity1 base:relatedTo ?entity2 .
-  ?entity2 base:relatedTo ?entity1 .
-}

@@ -1,0 +1,10 @@
+PREFIX base: <http://kg-course.io/health/>
+PREFIX snomed: <http://purl.bioontology.org/ontology/SNOMEDCT/>
+
+SELECT ?risk (COUNT(?p) AS ?numPatients)
+WHERE {
+    ?p base:hasDisease snomed:44054006 .   # Diabetes
+    ?p base:hasRiskFactor ?risk .
+}
+GROUP BY ?risk
+ORDER BY DESC(?numPatients)

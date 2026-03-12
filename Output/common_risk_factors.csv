@@ -1,0 +1,7 @@
+risk,numPatients
+http://kg-course.io/health/riskfactor/high_blood_pressure,8814
+http://kg-course.io/health/riskfactor/high_cholesterol,5322
+http://kg-course.io/health/riskfactor/smoking,5257
+http://kg-course.io/health/riskfactor/heart_disease,3517
+http://kg-course.io/health/riskfactor/exercise_induced_angina,3271
+http://kg-course.io/health/riskfactor/difficulty_walking,2579

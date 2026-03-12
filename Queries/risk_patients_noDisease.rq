@@ -1,0 +1,13 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?patient (COUNT(?risk) AS ?numRisks)
+WHERE {
+  ?patient base:hasRiskFactor ?risk .
+
+  FILTER NOT EXISTS {
+    ?patient base:hasDisease ?d
+  }
+}
+GROUP BY ?patient
+ORDER BY DESC(?numRisks)
+LIMIT 20

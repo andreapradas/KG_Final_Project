@@ -1,0 +1,8 @@
+PREFIX base: <http://kg-course.io/health/>
+
+SELECT ?disease (COUNT(?p) AS ?numPatients)
+WHERE {
+    ?p base:hasDisease ?disease .
+}
+GROUP BY ?disease
+ORDER BY DESC(?numPatients)

@@ -1,9 +1,12 @@
 PREFIX base: <http://kg-course.io/health/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-SELECT ?patient (COUNT(?patient) AS ?count)
+SELECT (COUNT(?patient) AS ?numDuplicatedPatients)
 WHERE {
-  ?patient rdf:type base:Patient .
+  SELECT ?patient
+  WHERE {
+    ?patient rdf:type base:Patient .
+  }
+  GROUP BY ?patient
+  HAVING (COUNT(?patient) > 1)
 }
-GROUP BY ?patient
-HAVING (COUNT(?patient) > 1)

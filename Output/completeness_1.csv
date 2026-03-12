@@ -1,0 +1,5 @@
+class,count
+http://kg-course.io/health/Disease,3
+http://schema.org/MedicalRiskFactor,6
+http://kg-course.io/health/Patient,29990
+http://schema.org/MedicalObservation,119940
